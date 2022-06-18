@@ -34,4 +34,32 @@ public class Car {
     public int getSize() {
         return size;
     }
+
+    public void moveDown() {
+        this.x ++;
+    }
+
+    public void moveUp() {
+        this.x --;
+    }
+
+    public void moveRight() {
+        this.y ++;
+    }
+
+    public void moveLeft() {
+        this.y --;
+    }
+
+    public boolean isHorizontal() {
+        return orient.equals("h");
+    }
+
+    public boolean isVertical() {
+        return orient.equals("v");
+    }
+
+    public Car clone(){
+        return new Car(this.x, this.y, this.orient, this.size);
+    }
 }
