@@ -12,6 +12,7 @@ public class Board {
     private int yExit;
     private Car redCar;
     private ArrayList<Car> cars;
+    private Car crashedCar;
 
     public Board(int rows, int cols, int numCars) {
         this.searchCount = 0;
@@ -61,11 +62,60 @@ public class Board {
         return searchCount;
     }
 
+    public Car getCrashedCar() {
+        return crashedCar;
+    }
+
     public Car getRedCar() {
-        return redCar;
+        return cars.get(0);
     }
 
     public void setRedCar(Car redCar) {
-        this.redCar = cars.get(0);
+        this.redCar = redCar;
     }
+
+    public boolean canMoveDown(Car car) {
+        if(car.getX() + car.getSize() < getRows()
+                && !crashCars(car.getX() + car.getSize(), car.getY()))
+            return true;
+        return false;
+    }
+
+    public boolean canMoveUp(Car car) {
+        if(car.getX() > 0 && !crashCars(car.getX()-1, car.getY()))
+            return true;
+        return false;
+    }
+
+    public boolean canMoveRight(Car car) {
+        if(car.getY() + car.getSize() < getCols()
+                && !crashCars(car.getX(), car.getY() + car.getSize()))
+            return true;
+        return false;
+    }
+
+    public boolean canMoveLeft(Car car) {
+        if(car.getY() > 0 && !crashCars(car.getX(), car.getY() -1))
+            return true;
+        return false;
+    }
+
+    public boolean crashCars(int x, int y) {
+        for(Car car : cars){
+            if(car.isHorizontal()){
+                if(x == car.getX() && y >= car.getY() && y < car.getY() + car.getSize()){
+                    crashedCar = car;
+                    return true;
+                }
+            }
+            else if(car.isVertical()){
+                if(y == car.getY() && x >= car.getX() && x < car.getX() + car.getSize()){
+                    crashedCar = car;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
