@@ -16,6 +16,7 @@ public class Main {
     public static ArrayList<Board> readBoardFromFile(String path){
         Scanner sc = null;
         int lineNum = 0;
+        int parkingIndex = 0;
         String[] vars;
 
         int numOfParking; // T
@@ -37,6 +38,8 @@ public class Main {
                     System.out.println(numOfParking);
 
                 }else if (lineNum == 1) { // reading info of board
+                    System.out.println("parking "+ (parkingIndex+1) + ":");
+
                     rowOfParking= Integer.parseInt(vars[0]);
                     colOfParking= Integer.parseInt(vars[1]);
                     numOfCars= Integer.parseInt(vars[2]);
@@ -45,12 +48,17 @@ public class Main {
                     boards.add(new Board(rowOfParking, colOfParking, numOfCars));
 
                 }else {
+                    if (line.equals("0")){ //if there are more than 1 parking
+                        lineNum = 1;
+                        parkingIndex++;
+                        continue;
+                    }
                         x= Integer.parseInt(vars[0]);
                         y= Integer.parseInt(vars[1]);
                         orient= (vars[2]);
                         size= Integer.parseInt(vars[3]);
                     System.out.println(x+" "+ y+" "+orient+" "+ size);
-                        boards.get(0).getCars().add(new Car(x, y,orient, size));
+                        boards.get(parkingIndex).getCars().add(new Car(x, y,orient, size));
 
                 }
                 lineNum++;
@@ -63,6 +71,7 @@ public class Main {
         finally {
             if (sc != null) sc.close();
         }
+
 
         return boards;
      }
