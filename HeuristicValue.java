@@ -1,9 +1,5 @@
 package com.company;
 
-import com.company.Car;
-import com.company.Heuristic;
-import com.company.State;
-
 public class HeuristicValue extends Heuristic {
 
     @Override

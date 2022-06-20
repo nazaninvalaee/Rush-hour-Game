@@ -1,15 +1,11 @@
 package com.company;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 public class AStar {
 
-    public Scanner in;
     public PriorityQueue<State> priorityQueue;
+    public Scanner in = new Scanner(System.in);;
 
     private LinkedList<State> aStarSearch(Board board, Heuristic heuristic) {
         HashMap<State, State> predecessor = new HashMap<>();
@@ -68,7 +64,46 @@ public class AStar {
         return path;
     }
 
+    private void solveProblem() {
+        priorityQueue = new PriorityQueue<State>(10, new Comparator<State>() {
 
+            @Override
+            public int compare(State o1, State o2) {
+                return o1.cost - o2.cost;
+            }
+
+        });
+
+        ArrayList<Board> boards = Main.boards;
+
+        for (int i = 0; i < boards.size(); i++) {
+            Heuristic heuristic1 = new HeuristicValue();
+            Heuristic heuristic2 = new Heuristic2();
+
+            long startTime = System.currentTimeMillis();
+            LinkedList<State> path1 = aStarSearch(boards.get(i), heuristic1);
+            long endTime = System.currentTimeMillis();
+            long timeTaken1 = endTime - startTime;
+
+            startTime = System.currentTimeMillis();
+            LinkedList<State> path2 = aStarSearch(boards.get(i), heuristic2);
+            endTime = System.currentTimeMillis();
+            long timeTaken2 = endTime - startTime;
+
+            System.out.println("Solution using Heuristic.");
+            System.out.println("#########################");
+            print(path1);
+            System.out.println("Time taken using heuristic : " + timeTaken1);
+            System.out.println();
+
+            System.out.println("Solution with no Heuristic used.");
+            System.out.println("################################");
+            print(path2);
+            System.out.println("Time taken without using heuristic : " + timeTaken2);
+
+            in.close();
+        }
+    }
 }
 
 
