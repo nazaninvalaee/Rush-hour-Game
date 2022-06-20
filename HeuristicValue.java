@@ -1,13 +1,15 @@
+package com.company;
+
 import com.company.Car;
 import com.company.Heuristic;
 import com.company.State;
 
-public class Heuristic1 extends Heuristic {
+public class HeuristicValue extends Heuristic {
 
     @Override
     public int getValue(State state) {
         Car redCar = state.puzzle.getRedCar();
-        int gridSize = state.puzzle.gridSize;
+        int gridSize = state.puzzle.getRows();
         int numberOfMovements = 0;
         for (int i = redCar.y + 2; i < gridSize; i++) {
             int x = redCar.x;

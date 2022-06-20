@@ -1,3 +1,5 @@
+package com.company;
+
 import com.company.Heuristic;
 import com.company.State;
 

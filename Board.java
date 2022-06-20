@@ -11,8 +11,8 @@ public class Board {
     private int xExit;
     private int yExit;
     private Car redCar;
-    private ArrayList<Car> cars;
-    private Car crashedCar;
+    public ArrayList<Car> cars;
+    public Car crashedCar;
 
     public Board(int rows, int cols, int numCars) {
         this.searchCount = 0;
