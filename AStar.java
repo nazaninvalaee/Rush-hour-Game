@@ -19,14 +19,6 @@ public class AStar {
 
 
 
-public abstract class Heuristic {
-
-    public Heuristic() {}
-
-    public abstract int getValue(State state);
-
-}
-
 public class Heuristic1 extends Heuristic{
 
     @Override
