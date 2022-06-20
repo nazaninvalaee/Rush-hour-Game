@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.function.DoubleToIntFunction;
 
 public class Board {
 
@@ -67,6 +68,7 @@ public class Board {
     }
 
     public Car getRedCar() {
+        System.out.println("size " + cars.size());
         return cars.get(0);
     }
 

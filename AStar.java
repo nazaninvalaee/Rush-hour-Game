@@ -64,7 +64,7 @@ public class AStar {
         return path;
     }
 
-    private void solveProblem() {
+    public void solveProblem() {
         priorityQueue = new PriorityQueue<State>(10, new Comparator<State>() {
 
             @Override

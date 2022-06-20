@@ -13,6 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
         readBoardFromFile(".\\test.txt");
+
+        AStar play = new AStar();
+        play.solveProblem();
     }
 
     public static ArrayList<Board> readBoardFromFile(String path){
