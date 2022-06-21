@@ -22,6 +22,12 @@ public class Board {
         cars = new ArrayList<>();
     }
 
+    public Board(int cols, int rows, ArrayList<Car> newCars) {
+        this.cols = cols;
+        this.rows = rows;
+        this.cars = newCars;
+    }
+
     public void setxExit(int xExit) {
         this.xExit = xExit;
     }

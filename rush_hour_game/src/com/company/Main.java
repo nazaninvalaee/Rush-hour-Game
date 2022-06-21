@@ -58,8 +58,8 @@ public class Main {
                         parkingIndex++;
                         continue;
                     }
-                        x= Integer.parseInt(vars[0]);
-                        y= Integer.parseInt(vars[1]);
+                        x= Integer.parseInt(vars[0]) - 1;
+                        y= Integer.parseInt(vars[1]) - 1;
                         orient= (vars[2]);
                         size= Integer.parseInt(vars[3]);
                     System.out.println(x+" "+ y+" "+orient+" "+ size);

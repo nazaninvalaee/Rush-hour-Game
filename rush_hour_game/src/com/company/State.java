@@ -15,7 +15,7 @@ public class State {
 
     public ArrayList<State> getNeighbors(){
         ArrayList<State> neighbors = new ArrayList<>();
-        ArrayList<Car> cars = this.puzzle.cars;
+        ArrayList<Car> cars = this.puzzle.getCars();
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
             if(car.isVertical()){
@@ -73,7 +73,7 @@ public class State {
 
 
     public boolean isGoal(){
-        return puzzle.getRedCar().y == puzzle.getRows() - 2;
+        return puzzle.getRedCar().getY() == puzzle.getRows() - 2;
     }
 
     public void print(){
@@ -87,33 +87,33 @@ public class State {
                 output[i][j] = '.';
             }
         }
-        for(Car car : puzzle.cars){
+        for(Car car : puzzle.getCars()){
             if(car.isHorizontal()){
-                if(car.size == 2){
+                if(car.getSize() == 2){
                     if(car.equals(puzzle.getRedCar())){
-                        output[car.x][car.y] = '=';
-                        output[car.x][car.y+1] = '=';
+                        output[car.getX()][car.getY()] = '=';
+                        output[car.getX()][car.getY()+1] = '=';
                     }
                     else{
-                        output[car.x][car.y] = '*';
-                        output[car.x][car.y+1] = '*';
+                        output[car.getX()][car.getY()] = '*';
+                        output[car.getX()][car.getY()+1] = '*';
                     }
                 }
-                else if(car.size == 3){
-                    output[car.x][car.y] = '#';
-                    output[car.x][car.y+1] = '#';
-                    output[car.x][car.y+2] = '#';
+                else if(car.getSize() == 3){
+                    output[car.getX()][car.getY()] = '#';
+                    output[car.getX()][car.getY()+1] = '#';
+                    output[car.getX()][car.getY()+2] = '#';
                 }
             }
             else if(car.isVertical()){
-                if(car.size == 2){
-                    output[car.x][car.y] = '+';
-                    output[car.x+1][car.y] = '+';
+                if(car.getSize() == 2){
+                    output[car.getX()][car.getY()] = '+';
+                    output[car.getX()+1][car.getY()] = '+';
                 }
-                else if(car.size == 3){
-                    output[car.x][car.y] = '@';
-                    output[car.x+1][car.y] = '@';
-                    output[car.x+2][car.y] = '@';
+                else if(car.getSize() == 3){
+                    output[car.getX()][car.getY()] = '@';
+                    output[car.getX()+1][car.getY()] = '@';
+                    output[car.getX()+2][car.getY()] = '@';
                 }
             }
         }

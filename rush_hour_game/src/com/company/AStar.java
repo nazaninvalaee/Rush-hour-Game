@@ -45,8 +45,8 @@ public class AStar {
         return visited.containsKey(v.toString());
     }
 
-    private void print(LinkedList<State> path) {
-        System.out.println("Number of optimal movements = " + (path.size()-1) + "\n");
+    private void print(LinkedList<State> path, int parkingIndex) {
+        System.out.println(String.format("Test#%d: %s", (parkingIndex + 1), (path.size() - 1)));
     }
 
     private LinkedList<State> getPath(HashMap<State, State> pred, State goal) {
@@ -78,17 +78,8 @@ public class AStar {
 
         for (int i = 0; i < boards.size(); i++) {
             Heuristic heuristic = new Heuristic();
-
-            long startTime = System.currentTimeMillis();
             LinkedList<State> path1 = aStarSearch(boards.get(i), heuristic);
-            long endTime = System.currentTimeMillis();
-            long timeTaken1 = endTime - startTime;
-
-            System.out.println("Solution using Heuristic.");
-            System.out.println("#########################");
-            print(path1);
-            System.out.println("Time taken using heuristic : " + timeTaken1);
-            System.out.println();
+            print(path1, i);
 
             in.close();
         }
