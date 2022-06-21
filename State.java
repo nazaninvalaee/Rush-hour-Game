@@ -16,11 +16,14 @@ public class State {
     public ArrayList<State> getNeighbors(){
         ArrayList<State> neighbors = new ArrayList<>();
         ArrayList<Car> cars = this.puzzle.cars;
+
         for (int i = 0; i < cars.size(); i++) {
             Car car = cars.get(i);
+
             if(car.isVertical()){
                 ArrayList<Car> newcars = cloneCars(cars);
                 Car newcar = newcars.get(i);
+
                 while(puzzle.canMoveDown(newcar)){
                     newcar.moveDown();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
@@ -30,6 +33,7 @@ public class State {
                 }
                 newcars = cloneCars(cars);
                 newcar = newcars.get(i);
+
                 while(puzzle.canMoveUp(newcar)){
                     newcar.moveUp();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
@@ -41,6 +45,7 @@ public class State {
             else if(car.isHorizontal()){
                 ArrayList<Car> newcars = cloneCars(cars);
                 Car newcar = newcars.get(i);
+
                 while(puzzle.canMoveRight(newcar)){
                     newcar.moveRight();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
@@ -50,6 +55,7 @@ public class State {
                 }
                 newcars = cloneCars(cars);
                 newcar = newcars.get(i);
+
                 while(puzzle.canMoveLeft(newcar)){
                     newcar.moveLeft();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),

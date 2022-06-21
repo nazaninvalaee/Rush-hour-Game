@@ -62,7 +62,7 @@ public class Main {
                         y= Integer.parseInt(vars[1]);
                         orient= (vars[2]);
                         size= Integer.parseInt(vars[3]);
-                    System.out.println(x+" "+ y+" "+orient+" "+ size);
+                        System.out.println(x+" "+ y+" "+orient+" "+ size);
                         boards.get(parkingIndex).getCars().add(new Car(x, y,orient, size));
 
                 }
@@ -76,7 +76,6 @@ public class Main {
         finally {
             if (sc != null) sc.close();
         }
-
 
         return boards;
      }
