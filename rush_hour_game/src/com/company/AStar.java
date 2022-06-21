@@ -5,7 +5,7 @@ import java.util.*;
 public class AStar {
 
     public PriorityQueue<State> priorityQueue;
-    public Scanner in = new Scanner(System.in);;
+    public Scanner in = new Scanner(System.in);
 
     private LinkedList<State> aStarSearch(Board board, Heuristic heuristic) {
         HashMap<State, State> predecessor = new HashMap<>();
@@ -77,29 +77,18 @@ public class AStar {
         ArrayList<Board> boards = Main.boards;
 
         for (int i = 0; i < boards.size(); i++) {
-            Heuristic heuristic1 = new HeuristicValue();
-            Heuristic heuristic2 = new Heuristic2();
+            Heuristic heuristic = new Heuristic();
 
             long startTime = System.currentTimeMillis();
-            LinkedList<State> path1 = aStarSearch(boards.get(i), heuristic1);
+            LinkedList<State> path1 = aStarSearch(boards.get(i), heuristic);
             long endTime = System.currentTimeMillis();
             long timeTaken1 = endTime - startTime;
-
-            startTime = System.currentTimeMillis();
-            LinkedList<State> path2 = aStarSearch(boards.get(i), heuristic2);
-            endTime = System.currentTimeMillis();
-            long timeTaken2 = endTime - startTime;
 
             System.out.println("Solution using Heuristic.");
             System.out.println("#########################");
             print(path1);
             System.out.println("Time taken using heuristic : " + timeTaken1);
             System.out.println();
-
-            System.out.println("Solution with no Heuristic used.");
-            System.out.println("################################");
-            print(path2);
-            System.out.println("Time taken without using heuristic : " + timeTaken2);
 
             in.close();
         }
