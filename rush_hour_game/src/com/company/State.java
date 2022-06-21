@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class State {
 
-    Board puzzle;
+    public Board puzzle;
     int cost;
 
     public State(Board puzzle) {
@@ -24,7 +24,7 @@ public class State {
                 while(puzzle.canMoveDown(newcar)){
                     newcar.moveDown();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
-                            newcars)));
+                            newcars.size())));
                     newcars = cloneCars(newcars);
                     newcar = newcars.get(i);
                 }
@@ -33,7 +33,7 @@ public class State {
                 while(puzzle.canMoveUp(newcar)){
                     newcar.moveUp();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
-                            newcars)));
+                            newcars.size())));
                     newcars = cloneCars(newcars);
                     newcar = newcars.get(i);
                 }
@@ -44,7 +44,7 @@ public class State {
                 while(puzzle.canMoveRight(newcar)){
                     newcar.moveRight();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
-                            newcars)));
+                            newcars.size())));
                     newcars = cloneCars(newcars);
                     newcar = newcars.get(i);
                 }
@@ -53,7 +53,7 @@ public class State {
                 while(puzzle.canMoveLeft(newcar)){
                     newcar.moveLeft();
                     neighbors.add(new State(new Board(this.puzzle.getCols(), this.puzzle.getRows(),
-                            newcars)));
+                            newcars.size())));
                     newcars = cloneCars(newcars);
                     newcar = newcars.get(i);
                 }

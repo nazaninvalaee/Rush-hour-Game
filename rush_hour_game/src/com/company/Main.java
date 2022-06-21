@@ -3,6 +3,8 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
         readBoardFromFile(".\\test.txt");
+
+        AStar play = new AStar();
+        play.solveProblem();
     }
 
     public static ArrayList<Board> readBoardFromFile(String path){
@@ -75,4 +80,5 @@ public class Main {
 
         return boards;
      }
+
 }

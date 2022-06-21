@@ -1,8 +1,8 @@
 package com.company;
 
 public class Car {
-    private int x;
-    private int y;
+    public int x;
+    public int y;
     private String orient;
     private int size;
     /**

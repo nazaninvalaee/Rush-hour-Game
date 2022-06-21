@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.function.DoubleToIntFunction;
 
 public class Board {
 
@@ -11,8 +12,8 @@ public class Board {
     private int xExit;
     private int yExit;
     private Car redCar;
-    private ArrayList<Car> cars;
-    private Car crashedCar;
+    public ArrayList<Car> cars;
+    public Car crashedCar;
 
     public Board(int rows, int cols, int numCars) {
         this.searchCount = 0;
@@ -67,6 +68,7 @@ public class Board {
     }
 
     public Car getRedCar() {
+        System.out.println("size " + cars.size());
         return cars.get(0);
     }
 
